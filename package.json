@@ -1,0 +1,23 @@
+{
+  "name": "bot-gwd-scraper",
+  "version": "1.0.0",
+  "description": "Node service that uses puppeteer to scrape data from thrice by geeks who drink.",
+  "homepage": "https://github.com/cblaylock18/bot-gwd-scraper#readme",
+  "bugs": {
+    "url": "https://github.com/cblaylock18/bot-gwd-scraper/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cblaylock18/bot-gwd-scraper.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "puppeteer": "^24.40.0"
+  }
+}
