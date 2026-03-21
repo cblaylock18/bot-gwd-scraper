@@ -30,8 +30,8 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build and push Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: ${{ github.ref == 'refs/heads/main' }}
-          tags: ghcr.io/${{ github.repository_owner }}/gwd-scraper:latest
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: "${{ github.ref == 'refs/heads/main' }}"
+        tags: "ghcr.io/${{ github.repository_owner }}/gwd-scraper:latest"
