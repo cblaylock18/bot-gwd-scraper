@@ -15,7 +15,9 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "run": "node app.js",
+    "docker:build": "docker build -t bot-gwd-scraper .",
+    "docker:run": "docker run bot-gwd-scraper"
   },
   "dependencies": {
     "puppeteer": "^24.40.0"

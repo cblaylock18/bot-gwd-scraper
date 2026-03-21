@@ -7,7 +7,12 @@ import { writeFileSync } from 'fs';
 const answers = [];
 
 // Launch the browser and open a new blank page.
-const browser = await puppeteer.launch();
+const browser = await puppeteer.launch({
+  args: [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+  ],
+});
 // const browser = await puppeteer.launch({ headless: false }); // for debugging
 
 const page = await browser.newPage();
@@ -72,6 +77,6 @@ await browser.close();
 // create game object and return json
 const game = new DailyGame(new Date(), answers);
 
-writeFileSync('output.json', game.getJSON());
+writeFileSync('/app/output/output.json', game.getJSON());
 
 

@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../api-gwd"
+		},
+		{
+			"path": "../app-gwd"
+		},
+		{
+			"path": "../common-gwd"
+		},
+		{
+			"path": "../gwd-project"
+		}
+	],
+  "settings": {}
+}
