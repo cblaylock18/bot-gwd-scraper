@@ -20,6 +20,7 @@
     "docker:run": "docker run bot-gwd-scraper"
   },
   "dependencies": {
+    "mysql2": "^3.20.0",
     "puppeteer": "^24.40.0"
   }
 }

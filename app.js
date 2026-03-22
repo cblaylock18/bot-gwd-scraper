@@ -1,7 +1,6 @@
 import puppeteer from 'puppeteer';
 import { Answer, DailyGame } from './game.js';
-import { writeFileSync } from 'fs';
-
+import { insertDailyGame } from './db.js';
 
 // Initialize objects to hold the scraped data
 const answers = [];
@@ -77,6 +76,6 @@ await browser.close();
 // create game object and return json
 const game = new DailyGame(new Date(), answers);
 
-writeFileSync('/app/output/output.json', game.getJSON());
+await insertDailyGame(game);
 
 
