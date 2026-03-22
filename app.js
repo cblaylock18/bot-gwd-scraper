@@ -17,11 +17,7 @@ const browser = await puppeteer.launch({
 
 const page = await browser.newPage();
 page.setDefaultTimeout(60000);
-await page.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', {
-  architecture: 'x86',
-  platform: 'Linux x86_64',
-  fullVersionList: [{ brand: 'Chrome', version: '120.0.0.0' }],
-});
+await page.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
 
 // Navigate the page to a URL.
 await page.goto('https://thrice.geekswhodrink.com/', {
