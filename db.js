@@ -5,12 +5,21 @@ export async function insertDailyGame(game) {
   let db;
   try {
     // create the connection to database
-    db = await mysql.createConnection({
-      host: process.env.DB_HOST,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
-    });
+    const db = await mysql.createConnection(
+      process.env.DB_HOST === '127.0.0.1'
+        ? {
+          host: process.env.DB_HOST,
+          user: process.env.DB_USER,
+          password: process.env.DB_PASSWORD,
+          database: process.env.DB_NAME,
+        }
+        : {
+          socketPath: `/cloudsql/quizgame-491018:us-west1:quizgame`,
+          user: process.env.DB_USER,
+          password: process.env.DB_PASSWORD,
+          database: process.env.DB_NAME,
+        }
+    );
 
     // execute will internally call prepare and query
     // insert game
