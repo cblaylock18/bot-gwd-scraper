@@ -5,7 +5,7 @@ export async function insertDailyGame(game) {
   let db;
   try {
     // create the connection to database
-    const db = await mysql.createConnection(
+    db = await mysql.createConnection(
       process.env.DB_HOST === '127.0.0.1'
         ? {
           host: process.env.DB_HOST,

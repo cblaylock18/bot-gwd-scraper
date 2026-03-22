@@ -15,9 +15,13 @@ const browser = await puppeteer.launch({
 // const browser = await puppeteer.launch({ headless: false }); // for debugging
 
 const page = await browser.newPage();
+page.setDefaultTimeout(60000);
 
 // Navigate the page to a URL.
-await page.goto('https://thrice.geekswhodrink.com/');
+await page.goto('https://thrice.geekswhodrink.com/', {
+  waitUntil: 'networkidle2',
+  timeout: 60000
+});
 
 // Set screen size.
 await page.setViewport({ width: 1080, height: 1024 });
