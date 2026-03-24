@@ -34,15 +34,11 @@ await page.goto('https://thrice.geekswhodrink.com/', {
 // Set screen size.
 await page.setViewport({ width: 1080, height: 1024 });
 
-// click play the game if the modal is present
-const playButton = await page.$('a::-p-text("Play the game")');
-if (playButton) {
-  await page.locator('a::-p-text("Play the game")').click();
-  await page.waitForSelector('[data-modal-target="body"]', { hidden: true });
-}
-
-// wait for the modal to be gone before proceeding
-await page.waitForSelector('[data-modal-target="body"]', { hidden: true });
+// dismiss modal if present
+await page.evaluate(() => {
+  const modal = document.querySelector('[data-controller="first-time-how-to-play"]');
+  if (modal) modal.remove();
+});
 
 for (let i = 0; i < 5; i++) {
   // repeat 5 times to account for each round
@@ -94,6 +90,7 @@ await browser.close();
 // if schedule changes, verify UTC date is still correct
 const game = new DailyGame(new Date(), answers);
 
+// console.log(game.getJSON());
 await insertDailyGame(game);
 
 
