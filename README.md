@@ -21,7 +21,7 @@ bot-gwd-scraper/
 ## Environment variables
 
 | Variable | Description |
-|----------|-------------|
+| ---------- | ------------- |
 | `DB_HOST` | DB hostname. Set to `db` in Docker Compose, `127.0.0.1` when running locally with proxy. Omit for Cloud Run (uses socket). |
 | `DB_PORT` | DB port. `3307` for local Docker, `3308` for prod proxy. |
 | `DB_USER` | MySQL username |
@@ -85,7 +85,7 @@ pkill cloud-sql-proxy
 ## npm scripts
 
 | Script | Description |
-|--------|-------------|
+| -------- | ------------- |
 | `npm run access dev db` | Opens a MySQL shell connected to the local Docker DB |
 | `npm run one-time:dev -- <script>` | Runs a one-time script against the local DB |
 | `npm run one-time:prod -- <script>` | Runs a one-time script against prod via Cloud SQL proxy |
