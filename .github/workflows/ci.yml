@@ -36,3 +36,10 @@ jobs:
         context: .
         push: "${{ github.ref == 'refs/heads/main' }}"
         tags: "us-west1-docker.pkg.dev/quizgame-491018/gwd/scraper:latest"
+
+    - name: Update Cloud Run job
+      if: github.ref == 'refs/heads/main'
+      run: |
+        gcloud run jobs update scraper \
+          --image=us-west1-docker.pkg.dev/quizgame-491018/gwd/scraper:latest \
+          --region=us-west1

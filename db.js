@@ -6,10 +6,11 @@ export async function insertDailyGame(game) {
   try {
     // create the connection to database
     db = await mysql.createConnection(
-      process.env.DB_HOST === '127.0.0.1'
+      process.env.DB_HOST
         ? {
           host: process.env.DB_HOST,
           user: process.env.DB_USER,
+          port: parseInt(process.env.DB_PORT || '3306'),
           password: process.env.DB_PASSWORD,
           database: process.env.DB_NAME,
         }

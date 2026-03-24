@@ -17,9 +17,13 @@
   "scripts": {
     "run": "node app.js",
     "docker:build": "docker build -t bot-gwd-scraper .",
-    "docker:run": "docker run bot-gwd-scraper"
+    "docker:run": "docker run bot-gwd-scraper",
+    "one-time:dev": "node --env-file=.env.local",
+    "one-time:prod": "cloud-sql-proxy quizgame-491018:us-west1:quizgame --port=3308 & sleep 3 && node --env-file=.env.prod",
+    "access-dev-db": "docker exec -it gwd-project-db-1 mysql -u chris -p quizgame"
   },
   "dependencies": {
+    "dotenv": "^17.3.1",
     "mysql2": "^3.20.0",
     "puppeteer": "^24.40.0"
   }

@@ -13,7 +13,13 @@ const browser = await puppeteer.launch({
     '--disable-blink-features=AutomationControlled',
   ],
 });
-// const browser = await puppeteer.launch({ headless: false }); // for debugging
+// const browser = await puppeteer.launch({
+//   args: [
+//     '--no-sandbox',
+//     '--disable-setuid-sandbox',
+//     '--disable-blink-features=AutomationControlled',
+//   ], headless: false, slowMo: 50
+// }); // for debugging
 
 const page = await browser.newPage();
 page.setDefaultTimeout(60000);
@@ -31,7 +37,7 @@ await page.setViewport({ width: 1080, height: 1024 });
 // click play the game if the modal is present
 const playButton = await page.$('a::-p-text("Play the game")');
 if (playButton) {
-  await playButton.click();
+  await page.locator('a::-p-text("Play the game")').click();
   await page.waitForSelector('[data-modal-target="body"]', { hidden: true });
 }
 
@@ -83,7 +89,9 @@ for (let i = 0; i < 5; i++) {
 }
 await browser.close();
 
-// create game object and return json
+// new Date() returns UTC time — scraper runs at 4:01am UTC (9:01pm PDT)
+// which is always the correct "next day" date in UTC
+// if schedule changes, verify UTC date is still correct
 const game = new DailyGame(new Date(), answers);
 
 await insertDailyGame(game);
